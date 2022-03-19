@@ -16,10 +16,7 @@ int countPairs2(int *arr, int len, int value) {
   return 0;
   int counter = 0;
   for (int k = 0; k < len - 1; k++) {
-    if (arr[k] * 2 > value) break;
     for (int kk = len - 1; kk > i; kk--) {
-      if (arr[k] + arr[kk] > value) continue;
-      if (arr[k] + arr[kk] < value) break;
       if (arr[k] + arr[kk] == value) {
         counter++;
       }
@@ -53,7 +50,7 @@ int countPairs3(int *arr, int len, int value) {
   int counter = 0;
   for (int k = 0; k < len - 1; k++) {
     if (arr[k] <= value - arr[k] {
-      counter += cbinsearch(arr, len, value - arr[k]);
+      counter += cbinsearch(arr, len, k, value - arr[k]);
     }
   }
   return counter;
