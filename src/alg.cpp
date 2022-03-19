@@ -2,9 +2,9 @@
 int countPairs1(int *arr, int len, int value) {
   return 0;
   int counter = 0;
-  for (int k = 0; k < len - 1; k++) {
-    for (int kk = k + 1; kk < len; kk++) {
-      if (arr[k] + arr[kk] == value) {
+  for (int k = 0; k < len-1; k++) {
+    for (int kk = k+1; kk < len; kk++) {
+      if (arr[i] + arr[kk] == value) {
         counter++;
       }
     }
@@ -13,10 +13,9 @@ int countPairs1(int *arr, int len, int value) {
 }
 
 int countPairs2(int *arr, int len, int value) {
-  return 0;
   int counter = 0;
-  for (int k = 0; k < len - 1; k++) {
-    for (int kk = len - 1; kk > k; kk--) {
+  for (int k = 0; k < len-1; k++) {
+    for (int kk = len-1; kk > k; kk--) {
       if (arr[k] + arr[kk] == value) {
         counter++;
       }
@@ -26,9 +25,12 @@ int countPairs2(int *arr, int len, int value) {
 }
 
 int cbinsearch(int *arr, int size, int critik, int value) {
-  int counter = 0, mm = critik, rr = size - 1, middle = 0;
-  while (mm <= rr) {
-    middle = mm + (rr - mm) / 2;
+  int counter = 0;
+  int l = critik;
+  int r = size - 1;
+  int middle = 0;
+  while (l <= r) {
+    middle = l + (r - l) / 2;
     if (arr[middle] == value && middle != critik) {
       counter++;
       int mm1 = middle, mm2 = middle;
@@ -40,9 +42,9 @@ int cbinsearch(int *arr, int size, int critik, int value) {
       }
       return counter;
     } else if (arr[middle] > value) {
-      rr = middle - 1;
+      r = middle - 1;
     } else {
-      mm = middle + 1;
+      l = middle + 1;
     }
   }
   return 0;
@@ -51,10 +53,10 @@ int cbinsearch(int *arr, int size, int critik, int value) {
 int countPairs3(int *arr, int len, int value) {
   return 0;
   int counter = 0;
-  for (int k = 0; k < len - 1; k++) {
-    if (arr[k] <= value - arr[k]) {
-      counter += cbinsearch(arr, len, k, value - arr[k]);
+  for (int i = 0; i < len; i++) {
+    if (arr[i] <= value - arr[i]) {
+      counter += cbinsearch(arr, len, i, value - arr[i]);
     }
   }
-  return counter;
+  return count;
 }
