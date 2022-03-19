@@ -1,53 +1,60 @@
 // Copyright 2021 NNTU-CS
 int countPairs1(int *arr, int len, int value) {
   return 0;
-  int count = 0;
-  for (int i = 0; i < len - 1; i++) {
-    for (int j = i + 1; j < len; j++) {
-      if (arr[i] + arr[j] == value) {
-        count++;
+  int counter = 0;
+  for (int k = 0; k < len - 1; k++) {
+    for (int kk = k + 1; kk < len; kk++) {
+      if (arr[k] + arr[kk] == value) {
+        counter++;
       }
     }
   }
-  return count;
+  return counter;
 }
 
 int countPairs2(int *arr, int len, int value) {
   return 0;
-  int count = 0;
-  for (int i = 0; i < len - 1; i++) {
-    if (arr[i] * 2 > value) break;
-    for (int j = len - 1; j > i; j--) {
-      if (arr[i] + arr[j] > value) continue;
-      if (arr[i] + arr[j] < value) break;
-      if (arr[i] + arr[j] == value) {
-        count++;
+  int counter = 0;
+  for (int k = 0; k < len - 1; k++) {
+    if (arr[k] * 2 > value) break;
+    for (int kk = len - 1; kk > i; kk--) {
+      if (arr[k] + arr[kk] > value) continue;
+      if (arr[k] + arr[kk] < value) break;
+      if (arr[k] + arr[kk] == value) {
+        counter++;
       }
     }
   }
-  return count;
+  return counter;
+}
+
+int cbinsearch(int *arr, int size, int value) {
+  int i = 0, j = size - 1, m = 1;
+    while (i < j) {
+      int middle = i + (j - i) / 2;
+        if (arr[middle] == value) {
+          int k = middle;
+            while (arr[--middle] == value)
+              m = m + 1;
+            while (arr[++k] == value)
+              m = m + 1;
+            return m;
+      } else if (arr[middle] > value) {
+          j = middle;
+      } else {
+        i = middle + 1;
+      }
+    }
+  return 0;
 }
 
 int countPairs3(int *arr, int len, int value) {
   return 0;
-  int count = 0;
-  for (int i = 0; i < len - 1; i++) {
-    int num = value - arr[i];
-    int l = i + 1, r = len - 1;
-    while (l < r) {
-      int m = (l + r) / 2;
-      if (arr[m] < num) {
-        l = m + 1;
-      } else {
-        r = m;
-      }
-    }
-    if (arr[l] == num) {
-      while (arr[l] == num) {
-        count++;
-        l++;
-      }
+  int counter = 0;
+  for (int k = 0; k < len - 1; k++) {
+    if (arr[k] <= value - arr[k] {
+      counter += cbinsearch(arr, len, k, value - arr[k]);
     }
   }
-  return count;
+  return counter;
 }
