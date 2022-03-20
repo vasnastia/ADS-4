@@ -1,60 +1,58 @@
 // Copyright 2021 NNTU-CS
 int countPairs1(int *arr, int len, int value) {
-  return 0;
-  int counter = 0;
-    for (int a = 0; a < len; a++) {
-        for (int b = a + 1; b < len; b++) {
-            if (arr[a] + arr[b] == value) {
-                counter++;
-            }
-        }
+  int c = 0;
+  for (int a = 0; a < len; a++) {
+    for (int b = a+1; b < len; b++) {
+      if (arr[a] + arr[b] == value) {
+        c++;
+      }
     }
-    return counter;
+  }
+  return c;
 }
 
 int countPairs2(int *arr, int len, int value) {
-  return 0;
-  int k = 0;
+  int c = 0;
   while (arr[len - 1] > value) {
     len--;
   }
-  for (int i = 0; i < len; i++) {
-    for (int j = i + 1; j < len; j++) {
-      if (arr[i] + arr[j] == value) {
-        k++;
+  for (int a = 0; a < len; a++) {
+    for (int b = a + 1; b < len; b++) {
+      if (arr[a] + arr[b] == value) {
+        c++;
+        }
       }
     }
-  }
-  return k;
+  return c;
 }
-int search(int* arr, int len, int value, int critic) {
-  int i = critic, j = len - 1, counter = 0;
-  while (i < j) {
-    int mid = i + (j - i) / 2;
-    if (arr[mid] == value && mid != critic) {
-      counter++;
-      int y = mid, yy = mid;
+
+int search(int* arr, int len, int value, int left) {
+  int a = left, b = len - 1, c = 0;
+  while (a < b) {
+    int midd = a + (b - a) / 2;
+    if (arr[midd] == value && mid != left) {
+      c++;
+      int y = midd, yy = midd;
       while (arr[++y] == value) {
-        counter++;
+        c++;
       }
-      while (arr[--yy] == value && yy > critic) {
-        counter++;
+      while (arr[--yy] == value && yy > left) {
+        c++;
       }
-      return counter;
-    } else if (arr[mid] > value) {
-      j = mid;
-    } else {
-      i = mid + 1;
-    }
+      return c;
+      } else if (arr[midd] > value) {
+          b = midd;
+      } else {
+          a = midd + 1;
+      }
   }
-  return 0;
+return 0;
 }
 
 int countPairs3(int *arr, int len, int value) {
-  return 0;
-  int counter = 0;
-  for (int ii = 0; ii < len; ii++) {
-      counter += search(arr, len, value - arr[ii], ii);
+  int c = 0;
+  for (int a = 0; a < len; a++) {
+    c += search(arr, len, value - arr[a], a);
   }
-  return counter;
+  return c;
 }
