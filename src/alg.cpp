@@ -30,7 +30,7 @@ int search(int* arr, int len, int value, int left) {
   int a = left, b = len - 1, c = 0;
   while (a < b) {
     int midd = a + (b - a) / 2;
-    if (arr[midd] == value && mid != left) {
+    if (arr[midd] == value && midd != left) {
       c++;
       int y = midd, yy = midd;
       while (arr[++y] == value) {
